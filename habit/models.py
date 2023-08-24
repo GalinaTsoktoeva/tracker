@@ -20,7 +20,7 @@ class Habit(models.Model):
         (3, 'eжемесячная')
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', **NULLABLE)
     place = models.CharField(max_length=150, verbose_name='место')
     time = models.DateTimeField(default=datetime.now(), verbose_name='время')
     action = models.CharField(max_length=150, verbose_name='действие')
