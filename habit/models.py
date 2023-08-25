@@ -15,16 +15,21 @@ class Habit(models.Model):
     """ класс описывает Атомные привычки """
 
     TITLE_PERIODICITY = [
-        (1, 'ежедневная'),
-        (2, 'еженедельная'),
-        (3, 'eжемесячная')
+        (1, 'каждый день'),
+        (2, 'раз в два дня'),
+        (3, 'раз в три дня'),
+        (4, 'раз в четыре дня'),
+        (5, 'раз в пять дней'),
+        (6, 'раз в шесть дней'),
+        (7, 'раз в семь дней')
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', **NULLABLE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', **NULLABLE, related_name='habit')
     place = models.CharField(max_length=150, verbose_name='место')
     time = models.DateTimeField(default=datetime.now(), verbose_name='время')
     action = models.CharField(max_length=150, verbose_name='действие')
     is_pleasant_habit = models.BooleanField(default=False, verbose_name='приятная привычка', **NULLABLE)
+    pleasant_habit = models.ForeignKey('self', verbose_name='приятная привычка', on_delete=models.CASCADE, **NULLABLE, related_name='habit')
     is_related_habit = models.BooleanField(default=False, verbose_name='связанная привычка', **NULLABLE)
     periodicity = models.PositiveSmallIntegerField(verbose_name='периодичность', default=1, choices=TITLE_PERIODICITY)
     reward = models.TextField(verbose_name='вознаграждение', **NULLABLE)

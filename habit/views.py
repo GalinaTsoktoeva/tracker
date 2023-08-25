@@ -10,7 +10,7 @@ class HabitCreateAPIView(generics.CreateAPIView):
 
 class HabitListAPIView(generics.ListAPIView):
     serializer_class = HabitSerializer
-    queryset = Habit.objects.all()
+    queryset = Habit.objects.filter(is_pleasant_habit=False)
 
 
 class HabitRetrieveAPIView(generics.RetrieveAPIView):
@@ -25,3 +25,8 @@ class HabitUpdateAPIView(generics.UpdateAPIView):
 
 class HabitDestroyAPIView(generics.DestroyAPIView):
     queryset = Habit.objects.all()
+
+
+# class PleasantHabitListAPIView(generics.ListAPIView):
+#     serializer_class =
+#     queryset = Habit.objects.filter(is_pleasant_habit=True)
