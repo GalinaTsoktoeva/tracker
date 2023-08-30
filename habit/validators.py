@@ -26,8 +26,9 @@ class IsPleasantValidator:
 
     def __call__(self, value):
         tmp_pleasant = dict(value).get(self.fields)
-        if not tmp_pleasant.is_pleasant_habit:
-            raise ValidationError('Возможно выбрать в связанную привычку только с признаком приятной привычки!')
+        if tmp_pleasant:
+            if not tmp_pleasant.is_pleasant_habit:
+                raise ValidationError('Возможно выбрать в связанную привычку только с признаком приятной привычки!')
 
 
 class LeadTimeValidator:
