@@ -12,14 +12,14 @@ class HabitTestCase(APITestCase):
 
         self.user = User.objects.create(
             email='test@test.com',
-            tg_chat_id=123456,
+            chat_id=123456,
         )
         self.user.set_password('test')
         self.user.save()
 
         self.second_user = User.objects.create(
             email='second_test@test.com',
-            tg_chat_id=123456,
+            chat_id=123456,
         )
         self.second_user.set_password('test')
         self.second_user.save()
