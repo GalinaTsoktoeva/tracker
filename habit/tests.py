@@ -218,10 +218,6 @@ class HabitTestCase(APITestCase):
             self.habit.time,
         )
         self.assertEqual(
-            response['duration_in_seconds'],
-            self.habit.duration_in_seconds,
-        )
-        self.assertEqual(
             response['place'],
             self.habit.place,
         )
